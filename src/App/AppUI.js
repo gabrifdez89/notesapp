@@ -7,10 +7,10 @@ import { CreateNoteButton } from '../CreateNoteButton';
 
 function AppUI() {
     return (
-        <React.Fragment>
-            <AppBox>
-                <NotesContext.Consumer>
-                    {({ notes, deleteNote }) => (
+        <NotesContext.Consumer>
+            {({ notes, createNote, deleteNote }) => (
+                <React.Fragment>
+                    <AppBox>
                         <NotesList>
                             {notes.map(note => (
                                 <NoteItem
@@ -21,17 +21,13 @@ function AppUI() {
                                 />
                             ))}
                         </NotesList>
-                    )}
-                </NotesContext.Consumer>
-                <NotesContext.Consumer>
-                    {({ createNote }) => (
-                        <CreateNoteButton 
+                        <CreateNoteButton
                             onClick={() => createNote()}
                         />
-                    )}
-                </NotesContext.Consumer>
-            </AppBox>
-        </React.Fragment>
+                    </AppBox>
+                </React.Fragment>
+            )}
+        </NotesContext.Consumer>
     );
 }
 
