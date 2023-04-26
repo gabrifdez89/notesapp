@@ -1,0 +1,10 @@
+.AppBox {
+    height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #E9DCCB;
+    position: relative;
+  }

@@ -1,0 +1,31 @@
+.NoteItem {
+    background-color: #D5C9A9;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-height: 120px;
+}
+
+.NoteItemExpanded {
+    background-color: #D5C9A9;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.NoteItemTextContainer {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; /* lines of the text to be showed */
+}
+
+.NoteItemTextContainerExpanded {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.NoteItemCloseMark {
+    float: right;
+}
