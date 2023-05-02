@@ -1,16 +1,17 @@
 import React from 'react';
 import './NoteItem.css';
+import { ContentEditableTitle } from '../ContentEditableTitle/index.js';
+import { ContentEditableText } from '../ContentEditableText/index.js';
 
-function NoteItem({ title, text, onCrossMarkClick }) {
+function NoteItem({ note, onCrossMarkClick, onNoteChange }) {
     const [expanded, setExpanded] = React.useState(false);
-    const onNoteItemClick = () => {
+    const onNoteItemExpandMarkClick = () => {
         setExpanded(!expanded);
     };
 
     return (
         <div
-            className={expanded ? "NoteItemExpanded" : "NoteItem"}
-            onClick={() => onNoteItemClick()}>
+            className={expanded ? "NoteItemExpanded" : "NoteItem"}>
                 <div className="NoteItemCloseMark">
                     <span 
                         className="material-symbols-outlined"
@@ -18,9 +19,33 @@ function NoteItem({ title, text, onCrossMarkClick }) {
                             close
                     </span>
                 </div>
-                <h1>{title}</h1>
+                <h1>
+                    <ContentEditableTitle
+                        onChange={onNoteChange}
+                        note={note}
+                    />
+                </h1>
                 <div className={expanded ? "NoteItemTextContainerExpanded" : "NoteItemTextContainer"}>
-                    <p>{text}</p>
+                    <ContentEditableText
+                        onChange={onNoteChange}
+                        note={note}
+                    />
+                </div>
+                <div className="NoteItemExpandMark">
+                    {expanded && 
+                        <span 
+                            className="material-symbols-outlined"
+                            onClick={() => onNoteItemExpandMarkClick()}>
+                                expand_less
+                        </span>
+                    }
+                    {!expanded &&
+                        <span 
+                            className="material-symbols-outlined"
+                            onClick={() => onNoteItemExpandMarkClick()}>
+                                expand_more
+                        </span>
+                    }
                 </div>
         </div>
     );

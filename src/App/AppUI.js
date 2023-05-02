@@ -4,12 +4,14 @@ import { AppBox } from '../AppBox';
 import { NotesList } from '../NotesList';
 import { NoteItem } from '../NoteItem';
 import { CreateNoteButton } from '../CreateNoteButton';
+import { EmptyState } from '../EmptyState';
 
 function AppUI() {
     const { 
         notes,
         createNote,
         deleteNote,
+        editNote,
     } = React.useContext(NotesContext);
 
     return (
@@ -18,12 +20,13 @@ function AppUI() {
                 <NotesList>
                     {notes.map(note => (
                         <NoteItem
-                            title={note.title}
-                            text={note.text}
                             key={note.id}
+                            note={note}
                             onCrossMarkClick={() => deleteNote(note.id)}
+                            onNoteChange={() => editNote(note)}
                         />
                     ))}
+                    {notes.length === 0 ? <EmptyState/> : ''}
                 </NotesList>
                 <CreateNoteButton
                     onClick={() => createNote()}

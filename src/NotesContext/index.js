@@ -37,10 +37,19 @@ function NotesProvider(props) {
     };
 
     const deleteNote = (id) => {
-        console.log(notes);
         let newNotes = [...notes];
         let index = newNotes.findIndex(x => x.id === id);
         newNotes.splice(index, 1);
+        saveNotes(newNotes);
+    };
+
+    const editNote = (note) => {
+        console.log('editing note...');
+        let newNotes = [...notes];
+        let index = newNotes.findIndex(x => x.id === note.id);
+        newNotes[index].title = note.title;
+        newNotes[index].text = note.text;
+        console.log(newNotes);
         saveNotes(newNotes);
     };
     
@@ -49,6 +58,7 @@ function NotesProvider(props) {
             notes,
             createNote,
             deleteNote,
+            editNote,
         }}>
             {props.children}
         </NotesContext.Provider>
