@@ -1,10 +1,10 @@
 import React from 'react';
 import './AppBox.css';
 
-function AppBox(props) {
+function AppBox({ children }) {
     return (
         <div className="AppBox">
-            {props.children}
+            {children}
         </div>
     );
 }

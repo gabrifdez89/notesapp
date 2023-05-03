@@ -1,10 +1,10 @@
 import React from 'react';
 import './NotesList.css';
 
-function NotesList(props) {
+function NotesList({ children }) {
     return (
         <section className="NotesList">
-            {props.children}
+            {children}
         </section>
     );
 }
