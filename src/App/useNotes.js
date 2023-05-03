@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 const defaultNotes = [
@@ -16,9 +15,8 @@ const defaultNotes = [
     },
   ];
 const defaultNextNodeId = 4;
-const NotesContext = React.createContext();
 
-function NotesProvider(props) {
+function useNotes() {
     const {
         item: notes,
         saveItem: saveNotes,
@@ -53,16 +51,12 @@ function NotesProvider(props) {
         saveNotes(newNotes);
     };
     
-    return (
-        <NotesContext.Provider value={{
-            notes,
-            createNote,
-            deleteNote,
-            editNote,
-        }}>
-            {props.children}
-        </NotesContext.Provider>
-    );
+    return {
+        notes,
+        createNote,
+        deleteNote,
+        editNote,
+    };
 }
 
-export { NotesContext, NotesProvider };
+export { useNotes };
