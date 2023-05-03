@@ -7,7 +7,7 @@ import { CreateNoteButton } from '../CreateNoteButton';
 import { EmptyState } from '../EmptyState';
 
 function App() {
-  const { 
+  const {
     notes,
     createNote,
     deleteNote,
@@ -16,22 +16,23 @@ function App() {
 
   return (
     <React.Fragment>
-        <AppBox>
-            <NotesList>
-                {notes.map(note => (
-                    <NoteItem
-                        key={note.id}
-                        note={note}
-                        onCrossMarkClick={() => deleteNote(note.id)}
-                        onNoteChange={() => editNote(note)}
-                    />
-                ))}
-                {notes.length === 0 ? <EmptyState/> : ''}
-            </NotesList>
-            <CreateNoteButton
-                onClick={() => createNote()}
+      <AppBox>
+        <NotesList
+          notes={notes}
+          onEmptyNotes={() => <EmptyState />}
+          render={note => (
+            <NoteItem
+              key={note.id}
+              note={note}
+              onCrossMarkClick={() => deleteNote(note)}
+              onNoteChange={() => editNote(note)}
             />
-        </AppBox>
+          )}
+        />
+        <CreateNoteButton
+          onClick={() => createNote()}
+        />
+      </AppBox>
     </React.Fragment>
   );
 }

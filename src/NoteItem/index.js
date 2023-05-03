@@ -15,19 +15,19 @@ function NoteItem({ note, onCrossMarkClick, onNoteChange }) {
                 <div className="NoteItemCloseMark">
                     <span 
                         className="material-symbols-outlined"
-                        onClick={onCrossMarkClick}>
+                        onClick={() => onCrossMarkClick(note)}>
                             close
                     </span>
                 </div>
                 <h1>
                     <ContentEditableTitle
-                        onChange={onNoteChange}
+                        onChange={() => onNoteChange(note)}
                         note={note}
                     />
                 </h1>
                 <div className={expanded ? "NoteItemTextContainerExpanded" : "NoteItemTextContainer"}>
                     <ContentEditableText
-                        onChange={onNoteChange}
+                        onChange={() => onNoteChange(note)}
                         note={note}
                     />
                 </div>
