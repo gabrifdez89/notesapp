@@ -32,20 +32,11 @@ function NoteItem({ note, onCrossMarkClick, onNoteChange }) {
                     />
                 </div>
                 <div className="NoteItemExpandMark">
-                    {expanded && 
-                        <span 
-                            className="material-symbols-outlined"
-                            onClick={() => onNoteItemExpandMarkClick()}>
-                                expand_less
-                        </span>
-                    }
-                    {!expanded &&
-                        <span 
-                            className="material-symbols-outlined"
-                            onClick={() => onNoteItemExpandMarkClick()}>
-                                expand_more
-                        </span>
-                    }
+                    <span 
+                        className="material-symbols-outlined"
+                        onClick={() => onNoteItemExpandMarkClick()}>
+                            {expanded ? `expand_less` : `expand_more`}
+                    </span>
                 </div>
         </div>
     );
