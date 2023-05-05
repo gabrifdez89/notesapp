@@ -15,12 +15,12 @@ class ContentEditableTitle extends React.Component {
 
   render = () => {
     return <ContentEditable
-              innerRef={this.contentEditable}
-              html={this.note.title} // innerHTML of the editable div
-              disabled={false}       // use true to disable editing
-              onChange={this.handleChange} // handle innerHTML change
-              tagName='article' // Use a custom HTML tag (uses a div by default)
-            />
+      innerRef={this.contentEditable}
+      html={this.note.title} // innerHTML of the editable div
+      disabled={false}       // use true to disable editing
+      onChange={this.handleChange} // handle innerHTML change
+      tagName='article' // Use a custom HTML tag (uses a div by default)
+    />
   };
 };
 
