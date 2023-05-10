@@ -48,12 +48,20 @@ function useNotes() {
     newNotes[index].text = note.text;
     saveNotes([...notes]);
   };
-  
-  return {
+
+  const state = {
     notes,
+  };
+  
+  const stateUpdaters = {
     createNote,
     deleteNote,
     editNote,
+  }
+
+  return {
+    state,
+    stateUpdaters,
   };
 }
 

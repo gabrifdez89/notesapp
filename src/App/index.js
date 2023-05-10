@@ -7,12 +7,17 @@ import { CreateNoteButton } from '../CreateNoteButton';
 import { EmptyState } from '../EmptyState';
 
 function App() {
+  const { state, stateUpdaters } = useNotes();
+
   const {
     notes,
+  } = state;
+
+  const {
     createNote,
     deleteNote,
     editNote,
-  } = useNotes();
+  } = stateUpdaters;
 
   return (
     <React.Fragment>
