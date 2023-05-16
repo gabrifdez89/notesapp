@@ -46,6 +46,7 @@ function useLocalStorage(itemName, defaultItem) {
 
 const initialState = ({ defaultItem }) => ({
   item: defaultItem,
+  loading: true,
 });
 
 const actionTypes = {
@@ -61,6 +62,7 @@ const reducerObject = (state, payload) => ({
   [actionTypes.initialLoad]: {
     ...state,
     item: payload,
+    loading: false,
   }
 });
 

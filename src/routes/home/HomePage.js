@@ -1,12 +1,14 @@
 import React from 'react';
-import { useNotes } from './useNotes';
-import { AppBox } from '../AppBox';
-import { NotesList } from '../NotesList';
-import { NoteItem } from '../NoteItem';
-import { CreateNoteButton } from '../CreateNoteButton';
-import { EmptyState } from '../EmptyState';
+import { useNotes } from '../useNotes';
+import { useNavigate } from 'react-router-dom';
+import { AppBox } from '../../ui/AppBox';
+import { NotesList } from '../../ui/NotesList';
+import { NoteItem } from '../../ui/NoteItem';
+import { CreateNoteButton } from '../../ui/CreateNoteButton';
+import { EmptyState } from '../../ui/EmptyState';
 
-function App() {
+function HomePage() {
+  const navigate = useNavigate();
   const { state, stateUpdaters } = useNotes();
 
   const {
@@ -31,6 +33,8 @@ function App() {
               note={note}
               onCrossMarkClick={() => deleteNote(note)}
               onNoteChange={() => editNote(note)}
+              onEditIconClick={() => navigate('/edit/' + note.id)}
+              readOnly={true}
             />
           )}
         />
@@ -42,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export { HomePage };

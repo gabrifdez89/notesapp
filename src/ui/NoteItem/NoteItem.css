@@ -27,8 +27,20 @@
     -webkit-box-orient: vertical;
 }
 
+.NoteItemEditIcon {
+    float: right;
+}
+
+.NoteItemEditIcon .material-symbols-outlined:hover {
+    color: #D6D1C6;
+}
+
 .NoteItemCloseMark {
     float: right;
+}
+
+.NoteItemCloseMark .material-symbols-outlined:hover {
+    color: #D6D1C6;
 }
 
 .NoteItemExpandMark {
