@@ -33,7 +33,9 @@ function HomePage() {
               note={note}
               onCrossMarkClick={() => deleteNote(note)}
               onNoteChange={() => editNote(note)}
-              onEditIconClick={() => navigate('/edit/' + note.id)}
+              onEditIconClick={() => navigate('/edit/' + note.id, {
+                state: { note: note }
+              })}
               readOnly={true}
             />
           )}

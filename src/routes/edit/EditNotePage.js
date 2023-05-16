@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNotes } from '../useNotes';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { AppBox } from '../../ui/AppBox';
 import { NotesList } from '../../ui/NotesList';
 import { NoteItem } from '../../ui/NoteItem';
@@ -8,6 +8,7 @@ import { EmptyState } from '../../ui/EmptyState';
 
 function EditNotePage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const params = useParams();
   const id = Number(params.id);
   const { state, stateUpdaters } = useNotes();
@@ -20,9 +21,15 @@ function EditNotePage() {
     getNote,
   } = state;
 
-  const note = getNote(id);
-  
-  if(note) {
+  let note ;
+
+  if (location.state?.note) {
+    note = location.state.note;
+  } else {
+    note = getNote(id);
+  }
+
+  if (note) {
     const notes = [note];
     return (
       <React.Fragment>
