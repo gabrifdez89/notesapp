@@ -46,3 +46,7 @@
 .NoteItemExpandMark {
     float:right;
 }
+
+.NoteItemExpandMarkHidden {
+    visibility: hidden;
+}

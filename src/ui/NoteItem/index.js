@@ -20,7 +20,7 @@ function NoteItem({ note, onCrossMarkClick, onNoteChange, onEditIconClick, readO
 
     return (
         <div
-            className={expanded ? "NoteItemExpanded" : "NoteItem"}>
+            className={(expanded || !readOnly) ? "NoteItemExpanded" : "NoteItem"}>
             <div className="NoteItemCloseMark">
                 <span
                     className="material-symbols-outlined"
@@ -36,14 +36,14 @@ function NoteItem({ note, onCrossMarkClick, onNoteChange, onEditIconClick, readO
                     readOnly={readOnly}
                 />
             </h1>
-            <div className={expanded ? "NoteItemTextContainerExpanded" : "NoteItemTextContainer"}>
+            <div className={(expanded || !readOnly) ? "NoteItemTextContainerExpanded" : "NoteItemTextContainer"}>
                 <ContentEditableText
                     onChange={() => onNoteChange(note)}
                     note={note}
                     readOnly={readOnly}
                 />
             </div>
-            <div className="NoteItemExpandMark">
+            <div className={readOnly ? "NoteItemExpandMark" : "NoteItemExpandMarkHidden"}>
                 <span
                     className="material-symbols-outlined"
                     onClick={() => onNoteItemExpandMarkClick()}>
